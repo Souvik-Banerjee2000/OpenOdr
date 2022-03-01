@@ -1,23 +1,24 @@
 import logo from './logo.svg';
 import './App.css';
 
+// import AuthenticationForm from "./components/AuthenticationForm"
+import AuthenticationForm from "./components/AuthenticationForm/AuthenticationForm"
+import UserTypeContextProvider from "./context/UsertypeContext"
+import RegisterOrLoginContextProvider from "./context/RegisterOrLoginContext"
 function App() {
+
+  function renderHomePage(){
+    if(localStorage.getItem("openodr") === "" || localStorage.getItem("openodr") === null || localStorage.getItem("openodr") === undefined)
+      return <AuthenticationForm/>
+    return  <div>Hello</div>
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <UserTypeContextProvider>
+          <RegisterOrLoginContextProvider>
+            {renderHomePage()}
+        </RegisterOrLoginContextProvider>
+        </UserTypeContextProvider>
     </div>
   );
 }
