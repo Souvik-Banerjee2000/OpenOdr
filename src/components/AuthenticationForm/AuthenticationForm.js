@@ -99,7 +99,6 @@ function AuthenticationForm() {
         <UserTypeSwitch/>
         <RegisterOrLoginSwitch/>
 
-        {JSON.stringify(formFields())}
         <Form.Group>
 
             {formFields().includes("email") && (
