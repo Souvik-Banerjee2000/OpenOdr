@@ -35,8 +35,8 @@ function RegisterOrLoginSwitch() {
         {console.log(typeof(registerOrLoginContext))}
         {/* { typeof(registerOrLoginContext) === String && (JSON.stringify(registerOrLoginContext))} */}
 
-        {JSON.stringify(registerOrLoginContext)}
-
+        <span>{JSON.stringify(registerOrLoginContext).replaceAll('"','').toUpperCase()}</span>
+            <br></br> <br></br>
         <label className="switch">
             <input type="checkbox" onClick={toogleSwitch}/>
             <span className="slider round"></span>

@@ -3,22 +3,26 @@ import './App.css';
 
 // import AuthenticationForm from "./components/AuthenticationForm"
 import AuthenticationForm from "./components/AuthenticationForm/AuthenticationForm"
-import UserTypeContextProvider from "./context/UsertypeContext"
-import RegisterOrLoginContextProvider from "./context/RegisterOrLoginContext"
+import AppMain from "./AppMain";
+import Dashboards from "./Dashborads";
+import { BrowserRouter, Route, Navigate, Routes } from 'react-router-dom'
+
+
 function App() {
 
-  function renderHomePage(){
-    if(localStorage.getItem("openodr") === "" || localStorage.getItem("openodr") === null || localStorage.getItem("openodr") === undefined)
-      return <AuthenticationForm/>
-    return  <div>Hello</div>
-  }
   return (
     <div className="App">
-        <UserTypeContextProvider>
-          <RegisterOrLoginContextProvider>
-            {renderHomePage()}
-        </RegisterOrLoginContextProvider>
-        </UserTypeContextProvider>
+      <BrowserRouter>
+          <Routes>
+            <Route path="/dashboards" element={<Dashboards />} />
+            <Route path="/authenticationForm" element={<AppMain/>}></Route>
+
+            <Route
+              path="*"
+              element={<Navigate to="/authenticationForm" />}
+            />
+          </Routes>
+      </BrowserRouter>
     </div>
   );
 }

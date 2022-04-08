@@ -35,10 +35,11 @@ function UserTypeSwitch() {
     return (
         <div> 
             {console.log(typeof(userTypeContextData))}
+            {console.log(userTypeContextData)}
             {/* { typeof(userTypeContextData) === String && (JSON.stringify(userTypeContextData))} */}
 
-            {JSON.stringify(userTypeContextData)}
-
+            <span>{JSON.stringify(userTypeContextData).replaceAll('"','').toUpperCase()}</span>
+            <br></br> <br></br>
             <label className="switch">
                 <input type="checkbox" onClick={toogleSwitch}/>
                 <span className="slider round"></span>
